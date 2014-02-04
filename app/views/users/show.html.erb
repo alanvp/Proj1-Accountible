@@ -1,0 +1,21 @@
+
+  <ul class="nav nav-pills">
+	  <li class="active"><%= link_to('My team', '#') %></li>
+	  <li><%= link_to('Invite', invite_path) %></li>
+	  <li><%= link_to('My OKRs', '#') %></li>
+  </ul>
+
+<div class="row"
+  <div class="col-md-2">
+
+    <%if current_user.team_id == nil %>
+      <p>No teammates yet</p> 
+    <%else%>
+      <%#teammates = @user.team.users.where("id != #{@user.id}")%>
+      <%teammates = current_user.team.users%>
+      <%teammates.each do |teammate|%>
+        <p><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
+      <%end%>  
+    <%end%>
+  </div>
+</div>
