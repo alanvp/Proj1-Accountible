@@ -15,5 +15,6 @@ Accountible::Application.routes.draw do
   get'/signin' => 'sessions#new'
 
   get '/invite', to: 'site#invite', via: :invite
+  post '/invite', to: 'site#create_invites', as: :create_invites
 
 end

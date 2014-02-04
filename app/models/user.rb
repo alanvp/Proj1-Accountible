@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
 =end
    belongs_to :team
    has_many :okrs
+   has_many :invites
 
     private
 

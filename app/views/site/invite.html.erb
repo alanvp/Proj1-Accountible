@@ -1,1 +1,21 @@
+ <ul class="nav nav-pills">
+    <li><%= link_to('My team', 'users/show') %></li>
+    <li class="active"><%= link_to('Invite', invite_path) %></li>
+    <li><%= link_to('My OKRs', '#') %></li>
+  </ul>
+
+<div class="row">
+  <div class="col-md-2">
+  </div>
+
+  <div class="col-md-5">
+    <%= form_for :invites, url: invite_path, method: :post do |f| %>
+      
+      <p><%= f.label :Enter_email_addresses_separated_by_commas %></p>
+      <%= f.text_area :emails, size: "60x12" %>
+
+      <%= f.submit "Invite", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
