@@ -1,0 +1,25 @@
+<%= render 'layouts/sidebar' %>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+
+  <div class="col-md-5">
+    <h3><%=current_user.name%>'s OKRs</h3>
+    <%okrs = current_user.okrs.all %>
+    <%if okrs == nil %>
+      <p>No OKRs yet</p> 
+    <%else%>
+      <%okrs.each do |okr|%>
+        <p><a href="<%=edit_okr_path(okr)%>"><strong>Objective:</strong> <%=okr.objective%></a></p>
+        <%i=1%>
+          <%until okr["kr#{i}"] == nil || okr["kr#{i}"] == "" %>
+            <p><strong>Key Result <%=i%>:</strong> <%=okr["kr#{i}"]%></p>
+            <%i += 1%>
+            <%end%>
+      <%end%>
+    <%end%>
+  </div>
+</div>
+
+

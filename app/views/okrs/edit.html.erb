@@ -1,0 +1,44 @@
+<%= render 'layouts/sidebar' %>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+
+  <div class="col-md-5">
+    <h3>Edit OKR</h3>
+
+
+   <%= form_for @okr, url: update_okr_path, method: :patch do |f| %>
+   
+      <%= f.label :objective%>
+      <br>
+      <%= f.text_field :objective%>
+      <br>
+      <%= f.label :Key_result_1%>
+      <br>
+      <%= f.text_field :kr1%>
+      <br>
+      <%= f.label :Key_result_2%>
+      <br>
+      <%= f.text_field :kr2%>
+      <br>
+      <%= f.label :Key_result_3%>
+      <br>
+      <%= f.text_field :kr3%>            
+      <br>
+      <%= f.label :Key_result_4%>
+      <br>
+      <%= f.text_field :kr4%>
+      <br>
+      <%= f.label :Key_result_5%>
+      <br>
+      <%= f.text_field :kr5%>            
+      <br>
+      <br>
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <% end %>
+    <br>
+    <%= link_to "Delete this OKR", delete_okr_path, method: "delete" %>
+  </div> 
+</div>   
+
