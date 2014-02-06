@@ -48,6 +48,7 @@ group :development do
 	gem 'dotenv-rails'
 end
 
+ruby "2.0.0"
 
 # Use unicorn as the app server
 # gem 'unicorn'

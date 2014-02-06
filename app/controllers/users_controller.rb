@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def new
+    team_id = params.require(:id).permit(:id) || nil
+    binding.pry
     @user = User.new()
   end
 
