@@ -7,8 +7,7 @@
     <%if current_user.team_id == nil %>
       <p>No teammates yet</p> 
     <%else%>
-      <%#teammates = @user.team.users.where("id != #{@user.id}")%>
-      <%teammates = current_user.team.users%>
+      <%teammates = @user.team.users.where("id != #{@user.id}")%>
       <%teammates.each do |teammate|%>
         <p><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
       <%end%>  

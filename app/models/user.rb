@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
    belongs_to :team
    has_many :okrs
    has_many :invites
+   has_many :todos
 
     private
 

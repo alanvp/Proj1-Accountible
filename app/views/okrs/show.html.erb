@@ -13,7 +13,7 @@
 	  <%end%>
 	</div>
 
-	<div class="col-md-5">
+	<div class="col-md-4">
 		<h3><%=@teammate.name%>'s OKRs</h3>
 		<%okrs = @teammate.okrs.all %>
 		<%if okrs == nil %>
@@ -29,6 +29,14 @@
       <%end%>
     <%end%>
   </div>
+
+  <div class="col-md-1">
+  </div>
+
+  <div class="col-md-4">
+
+  </div>
+
 </div>
 
 

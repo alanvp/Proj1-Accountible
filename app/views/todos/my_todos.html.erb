@@ -1,0 +1,43 @@
+
+<%= render 'layouts/sidebar' %>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+
+  <div class="col-md-5">
+    <h3><%=current_user.name%>'s to-do's this week</h3>
+    <%= link_to "NEW To-do", new_todo_path%>
+    <br>
+    <br>
+    <%current_week = Time.now.strftime("%GW%V")%>
+    <%todos = current_user.todos.where("week_created = ?", current_week) %>
+    <%if todos == nil || todos == [] %>
+      <p>No to-do's yet</p> 
+    <%else%>
+      <%todos.each do |todo|%>
+        <p>
+          <a href="<%=edit_todo_path(todo)%>"><%=todo.todo%>: <%=todo.pct_complete%>% done</a>
+        </p>
+ 
+      <%end%>
+    <%end%>
+
+
+    <h3>Last week's to-do's</h3>
+    <%last_week = (Time.now-7.days).strftime("%GW%V")%>
+    <%todos = current_user.todos.where("week_created = ?", last_week) %>
+    <%if todos == nil || todos == []%>
+      <p>No to-do's last week</p> 
+    <%else%>
+      <%todos.each do |todo|%>
+        <p>
+          <a href="<%=edit_todo_path(todo)%>"><%=todo.todo%>: <%=todo.pct_complete%>% done</a>
+        </p>
+ 
+      <%end%>
+    <%end%>
+
+  </div>
+</div>
+
