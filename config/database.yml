@@ -24,5 +24,5 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: Accountibility_production
+  database: accountibility_production
   pool: 5

@@ -42,15 +42,6 @@ ActiveRecord::Schema.define(version: 20140205225425) do
 
   add_index "okrs", ["user_id"], name: "index_okrs_on_user_id", using: :btree
 
-  create_table "students", force: true do |t|
-    t.string  "family_name"
-    t.string  "given_name"
-    t.integer "table_id"
-  end
-
-  create_table "tables", force: true do |t|
-  end
-
   create_table "teams", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
