@@ -26,6 +26,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= hidden_field_tag(:team_id, @user.team_id) %>
 
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
