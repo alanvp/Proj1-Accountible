@@ -4,12 +4,16 @@
 <div class="row"
   <div class="col-md-2">
 
-    <%if current_user.team_id == nil %>
+    <%if current_user.team_id == nil%>
       <p>No teammates yet</p> 
     <%else%>
       <%teammates = @user.team.users.where("id != #{@user.id}")%>
-      <%teammates.each do |teammate|%>
+      <%if teammates == []%>
+         <p>No teammates yet</p>
+      <%else%>
+        <%teammates.each do |teammate|%>
         <p><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
+        <%end%>
       <%end%>  
     <%end%>
   </div>

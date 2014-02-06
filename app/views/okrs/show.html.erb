@@ -3,17 +3,17 @@
 <div class="row">
 	<div class="col-md-2">
 
-	  <%if current_user.team_id == nil %>
-	    <p>No teammates yet</p> 
-	  <%else%>
-	    <%teammates = current_user.team.users%>
+
+	    <%teammates = current_user.team.users.where("id != #{current_user.id}")%>
 	    <%teammates.each do |teammate|%>
 	      <p><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
-	    <%end%>  
-	  <%end%>
+      <%end%>  
 	</div>
 
-	<div class="col-md-4">
+<div class="col-md-1">
+</div>
+
+	<div class="col-md-3">
 		<h3><%=@teammate.name%>'s OKRs</h3>
 		<%okrs = @teammate.okrs.all %>
 		<%if okrs == nil %>
@@ -33,9 +33,39 @@
   <div class="col-md-1">
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-3">
+    <h3><%=@teammate.name%>'s to-do's</h3>
 
+    <%current_week = Time.now.strftime("%GW%V")%>
+    <%todos = @teammate.todos.where("week_created = ?", current_week) %>
+    <%if todos == nil || todos == [] %>
+      <p>No to-do's yet</p> 
+    <%else%>
+      <%todos.each do |todo|%>
+        <p>
+          <%=todo.todo%>: <%=todo.pct_complete%>% done
+        </p>
+ 
+      <%end%>
+    <%end%>
+
+
+    <h3>Last week's to-do's</h3>
+    <%last_week = (Time.now-7.days).strftime("%GW%V")%>
+    <%todos = @teammate.todos.where("week_created = ?", last_week) %>
+    <%if todos == nil || todos == []%>
+      <p>No to-do's last week</p> 
+    <%else%>
+      <%todos.each do |todo|%>
+        <p>
+          <%=todo.todo%>: <%=todo.pct_complete%>% done
+        </p>
+ 
+      <%end%>
+    <%end%>
   </div>
+
+  <!-- Button goes here -->
 
 </div>
 

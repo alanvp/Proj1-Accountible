@@ -9,7 +9,7 @@ class OkrsController < ApplicationController
   end
 
   def show
-  	id = params[:format]
+  	id = params[:id]
   	@teammate = User.find(id)
   end
 

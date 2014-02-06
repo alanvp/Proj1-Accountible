@@ -6,7 +6,7 @@ Accountible::Application.routes.draw do
  
   
 
-  get "/okrs/show", to: 'okrs#show', as: :show_okr
+  get "/okrs/:id/show", to: 'okrs#show', as: :show_okr
   get "/okrs/new", to: 'okrs#new', as: :new_okr
 
   get "/okrs/my_okrs", to: 'okrs#my_okrs', as: :my_okrs
