@@ -45,9 +45,9 @@ group :development do
 	gem 'pry-rails'
 	gem 'awesome_print'
 	gem 'quiet_assets' 
-	gem 'dotenv-rails'
 end
 
+gem 'dotenv-rails'
 ruby "2.0.0"
 
 # Use unicorn as the app server

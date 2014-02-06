@@ -9,7 +9,6 @@ development:
   encoding: unicode
   pool: 5
   host: "localhost"  
-  database: Accountibility_development 
 
 
 
