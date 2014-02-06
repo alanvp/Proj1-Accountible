@@ -16,7 +16,7 @@ Accountible::Application.routes.draw do
   delete "/okrs/:id/delete", to: 'okrs#destroy', as: :delete_okr
 
   get '/signup' => 'users#new'
-  get '/signup/:id' => 'users#new'
+  get '/signup/:id/new_teammate' => 'users#new_teammate'
   match '/signout', to: 'sessions#destroy', via: :delete
   get'/signin' => 'sessions#new'
 
