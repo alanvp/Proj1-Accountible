@@ -3,10 +3,11 @@
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
     </head>
     <body>
-        <h1><%= current_user.name %> has invited you to join his Accountibility team. </h1>
+        <h1><%= @user.name %> has invited you to join his Accountibility team. </h1>
         <p>
             
-            Achieve great things, together. To join the site, just follow this link: http://localhost:3000/
+            Achieve great things, together. To join the site, just follow this link: 
+            http://localhost:3000/signup/<%=@user.team_id%>/new_teammate
         </p>
         <p>Thanks for joining and have a great day!</p>
     </body>

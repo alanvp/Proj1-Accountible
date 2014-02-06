@@ -5,10 +5,15 @@ class UsersController < ApplicationController
   end
 
   def new
-    team_id = params.require(:id).permit(:id) || nil
-    binding.pry
     @user = User.new()
   end
+
+  def new_teammate
+    team_id = params.require(:id).permit(:id)
+    @user = User.new(team_id: :team_id)
+    render :new
+  end
+
 
   def create
     new_user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
