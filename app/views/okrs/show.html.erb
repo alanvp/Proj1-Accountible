@@ -86,7 +86,7 @@
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
    
-      google.setOnLoadCallback(drawChart);
+      $(document).on('ready page:load', drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['To-do', 'Completed'],
