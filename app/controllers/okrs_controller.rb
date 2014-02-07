@@ -11,7 +11,22 @@ class OkrsController < ApplicationController
   def show
   	id = params[:id]
   	@teammate = User.find(id)
+    calc_pie_chart_stats(@teammate)
   end
+
+  def calc_pie_chart_stats(teammate)
+    @n = 0
+    @finished = 0
+    teammate.todos.each do |todo|
+      if todo["pct_complete"].to_i >= 75
+        @finished += 1
+      end
+      @n += 1
+    end
+    gon.finished = @finished
+    gon.unfinished = @n - @finished
+  end
+
 
   def my_okrs
   end

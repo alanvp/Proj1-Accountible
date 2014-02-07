@@ -15,34 +15,17 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['To-do', 'Completed'],
-          ['Failed',     11],
-          ['Succeeded',      2]
-        ]);
-  
-        var options = {
-          title: 'To-do\'s completed'
-        };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-    </script>
+
 
 
 
 </head>
 <body>
 
+  <div class="container-fluid">
+    <%= render 'layouts/header' %>
 
-  <%= render 'layouts/header' %>
-	<div class="container">
 	    <div class="row">
 	      <div class="col-md-12 col-sm-12">
 	        <%flash.each do|key,value|%>

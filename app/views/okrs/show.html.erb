@@ -6,7 +6,7 @@
 
 	    <%teammates = current_user.team.users.where("id != #{current_user.id}")%>
 	    <%teammates.each do |teammate|%>
-	      <p><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
+	      <p style="margin-left: 20px"><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
       <%end%>  
 	</div>
 
@@ -20,19 +20,19 @@
 	  <%else%>
 	  	<%okrs.each do |okr|%>
         <p><strong>Objective:</strong> <%=okr.objective%></p>
+        <strong>Key Results</strong></br>
         <%i=1%>
           <%until okr["kr#{i}"] == nil %>
-            <p><strong>Key Result <%=i%>:</strong> <%=okr["kr#{i}"]%></p>
+            <%=i%>: <%=okr["kr#{i}"]%></br>
             <%i += 1%>
             <%end%>
       <%end%>
     <%end%>
   </div>
 
-  <div class="col-md-1">
-  </div>
 
-  <div class="col-md-2">
+
+  <div class="col-md-3">
     <h3><%=@teammate.name%>'s to-do's</h3>
 
     <%current_week = Time.now.strftime("%GW%V")%>
@@ -68,12 +68,36 @@
 
 
   <div class="col-md-3">
-    <div id="piechart" style="width: 450px; height: 250px;"></div>
+      <div id="piechart" style="width: 400px; height: 250px; margin-left: -30px"></div>
+      <br>
+
+      <a href="#" class="btn btn-primary btn-large center-block" role="button">Props</a>
+      <a href="#" class="btn btn-danger btn-large center-block" role="button">Berate</a>
   </div>
     
-  <!-- Button goes here -->
+
 
 </div>
 
 
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+   
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['To-do', 'Completed'],
+          ['To-do\'s at least 75% finished',     gon.finished],
+          ['Less than 75% finished',      gon.unfinished]
+        ]);
+  
+        var options = {
+          title: 'Percent of all to-do\'s completed'
+        };
 
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+      
+    </script>
