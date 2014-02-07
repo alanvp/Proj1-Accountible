@@ -1,18 +1,12 @@
-<%= render 'layouts/sidebar' %>
+<h1 class="page-header">Invite team members</h1>
 
-<div class="row">
-  <div class="col-md-2">
-  </div>
 
-  <div class="col-md-5">
     <%= form_for :invites, url: create_invites_path, method: :post do |f| %>
       
       <p><%= f.label :Enter_email_addresses_separated_by_commas %></p>
-      <%= f.text_area :emails, size: "60x12" %>
-
+      <%= f.text_area :emails, size: "45x3" %>
+      <br>
       <%= f.submit "Invite", class: "btn btn-large btn-primary" %>
     <% end %>
-  </div>
 
-</div>
 

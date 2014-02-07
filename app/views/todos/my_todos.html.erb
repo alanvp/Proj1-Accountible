@@ -1,15 +1,13 @@
 
-<%= render 'layouts/sidebar' %>
+<h1 class="page-header">My To-do's</h1>
 
-<div class="row">
-  <div class="col-md-4">
-  </div>
 
-  <div class="col-md-5">
-    <h3><%=current_user.name%>'s to-do's this week</h3>
     <%= link_to "NEW To-do", new_todo_path%>
     <br>
     <br>
+
+    <h5>To-do's this week</h5>
+
     <%current_week = Time.now.strftime("%GW%V")%>
     <%todos = current_user.todos.where("week_created = ?", current_week) %>
     <%if todos == nil || todos == [] %>
@@ -24,7 +22,8 @@
     <%end%>
 
 
-    <h3>Last week's to-do's</h3>
+    <br>
+    <h5>To-do's last week</h5>
     <%last_week = (Time.now-7.days).strftime("%GW%V")%>
     <%todos = current_user.todos.where("week_created = ?", last_week) %>
     <%if todos == nil || todos == []%>

@@ -1,26 +1,15 @@
-<%= render 'layouts/sidebar' %>
-
-<div class="row">
-  <div class="col-md-4">
-  </div>
-
-  <div class="col-md-5">
-    <h3>Edit to-do</h3>
+<h1 class="page-header">Edit To-do</h1>
 
 
    <%= form_for @todo, url: update_todo_path, method: :patch do |f| %>
    
       <%= f.label :To_do%>
-      <br>
       <%= f.text_field :todo%>         
       <br>
       <%= f.label :Percent_complete%>
-      <br>
       <%= f.text_field :pct_complete%>  
       <br>
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
-
-  </div> 
-</div>   
+ 
 

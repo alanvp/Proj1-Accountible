@@ -1,23 +1,14 @@
-<%= render 'layouts/sidebar' %>
-
-<div class="row">
-  <div class="col-md-4">
-  </div>
-
-  <div class="col-md-5">
-    <h3>Create a new to-do for this week</h3>
+<h1 class="page-header">New To-do</h1>
 
 
    <%= form_for :todo, url: create_todo_path, method: :post do |f| %>
    
       <%= f.label :To_do%>
-      <br>
+    
       <%= f.text_field :todo%>
       <br>
       
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
-    <br>
-  </div> 
-</div>   
+  
 

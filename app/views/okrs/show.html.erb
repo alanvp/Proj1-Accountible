@@ -1,26 +1,27 @@
-<%= render 'layouts/sidebar' %>
+<h1 class="page-header">My team</h1>
 
-<div class="row">
-	<div class="col-md-2">
+<div class="row placeholders">
+  <%teammates = current_user.team.users.where("id != #{current_user.id}")%>
+  <%teammates.each do |teammate|%>
+    <div class="col-sm-3 placeholder">
+        <h3><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></h3>
+    </div>    
+  <%end%>  
+  </br>
+  </br>
+  </br>        
+</div>
 
+<hr size=1>
 
-	    <%teammates = current_user.team.users.where("id != #{current_user.id}")%>
-	    <%teammates.each do |teammate|%>
-	      <p style="margin-left: 20px"><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
-      <%end%>  
-	</div>
-
-
-
-	<div class="col-md-3">
-		<h3><%=@teammate.name%>'s OKRs</h3>
+	<div class="col-sm-3" style="margin-left: -15px">
+		<h4><%=@teammate.name%>'s OKRs</h4>
 		<%okrs = @teammate.okrs.all %>
 		<%if okrs == nil %>
 	    <p>No OKRs yet</p> 
 	  <%else%>
 	  	<%okrs.each do |okr|%>
-        <p><strong>Objective:</strong> <%=okr.objective%></p>
-        <strong>Key Results</strong></br>
+        Objective: <%=okr.objective%></br>
         <%i=1%>
           <%until okr["kr#{i}"] == nil %>
             <%=i%>: <%=okr["kr#{i}"]%></br>
@@ -33,7 +34,7 @@
 
 
   <div class="col-md-3">
-    <h3><%=@teammate.name%>'s to-do's</h3>
+    <h4><%=@teammate.name%>'s to-do's</h4>
 
     <%current_week = Time.now.strftime("%GW%V")%>
     <%todos = @teammate.todos.where("week_created = ?", current_week) %>
@@ -49,7 +50,8 @@
     <%end%>
 
 
-    <h3>Last week's to-do's</h3>
+  </br>
+    <h4>Last week's to-do's</h4>
     <%last_week = (Time.now-7.days).strftime("%GW%V")%>
     <%todos = @teammate.todos.where("week_created = ?", last_week) %>
     <%if todos == nil || todos == []%>
@@ -68,11 +70,11 @@
 
 
   <div class="col-md-3">
-      <div id="piechart" style="width: 400px; height: 250px; margin-left: -30px"></div>
+      <div id="piechart" style="width: 400px; height: 250px; margin-left: -30px; margin-top: -5px"></div>
       <br>
 
-      <a href="#" class="btn btn-primary btn-large center-block" role="button">Props</a>
-      <a href="#" class="btn btn-danger btn-large center-block" role="button">Berate</a>
+      <a href="#" class="btn btn-primary btn-large" role="button" style="margin-left: 60px; margin-top: -20px">Props</a>
+      <a href="#" class="btn btn-danger btn-large" role="button" style="margin-top: -20px">Berate</a>
   </div>
     
 
@@ -93,8 +95,12 @@
         ]);
   
         var options = {
-          title: 'Percent of all to-do\'s completed'
-        };
+          title: 'Percent of all to-do\'s completed',
+          titleTextStyle: {
+            fontSize: 16,
+            bold: true,
+            italic: false }
+          };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);

@@ -17,11 +17,11 @@ Accountible::Application.routes.draw do
 
   get '/signup/:token' => 'users#new_teammate'
   get '/signup' => 'users#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  get '/signout', to: 'sessions#destroy'
   get'/signin' => 'sessions#new'
 
-  get '/invite', to: 'site#invite', via: :invite
-  post '/invite', to: 'site#create_invites', as: :create_invites
+  get '/invite', to: 'users#invite', via: :invite
+  post '/invite', to: 'users#create_invites', as: :create_invites
 
   get "/todos/my_todos", to: 'todos#my_todos', as: :my_todos
   get "/todos/new", to: 'todos#new', as: :new_todo

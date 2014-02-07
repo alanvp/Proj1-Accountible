@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  layout 'main'
+  
   def new
   end
 

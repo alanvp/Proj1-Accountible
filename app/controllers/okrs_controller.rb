@@ -1,4 +1,5 @@
 class OkrsController < ApplicationController
+  layout 'main'
   def new
   end
 

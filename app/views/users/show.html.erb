@@ -1,20 +1,20 @@
 
-<%= render 'layouts/sidebar' %>
-
-<div class="row"
-  <div class="col-md-2">
-
+    <h1 class="page-header">My Team</h1>
+    
     <%if current_user.team_id == nil%>
       <p>No teammates yet</p> 
     <%else%>
-      <%teammates = @user.team.users.where("id != #{@user.id}")%>
-      <%if teammates == []%>
-         <p>No teammates yet</p>
-      <%else%>
+      <%teammates = current_user.team.users.where("id != #{current_user.id}")%>
+      <div class="row placeholders">
         <%teammates.each do |teammate|%>
-        <p><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></p>
-        <%end%>
-      <%end%>  
+          <div class="col-sm-3 placeholder">
+              <h3><a href="<%=show_okr_path(teammate.id)%>"><%=teammate.name%></a></h3>
+          </div>    
+        <%end%>  
+        </br>
+        </br>
+        </br>        
+      </div>
     <%end%>
-  </div>
-</div>
+
+
