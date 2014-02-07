@@ -47,8 +47,12 @@ group :development do
 	gem 'quiet_assets' 
 end
 
+gem "gon", "~> 5.0.1"
+
 gem 'dotenv-rails'
 ruby "2.0.0"
+
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
